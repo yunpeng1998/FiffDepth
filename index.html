@@ -126,13 +126,13 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <img id="teaser" width="100%" src="./static/images/teaser.png"/>
+      <img id="teaser" width="100%" src="./static/images/teaser3.pdf"/>
     </div>
   </div>
 </section>
 
 
-<section class="hero teaser">
+<!-- <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
       <h4 class="subtitle has-text-centered">
@@ -154,10 +154,10 @@
       
     </div>
   </div>
-</section>
+</section> -->
 
 
-<section class="section"  style="margin-top: 0; padding-top: 20px;">
+<!-- <section class="section"  style="margin-top: 0; padding-top: 20px;">
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-full-width">
@@ -177,10 +177,10 @@
       </div>
     </div>
   </div>
-</section>
+</section> -->
 
 
-<section class="hero is-small" style="margin-top: 30px; padding-top: 0px;">
+<!-- <section class="hero is-small" style="margin-top: 30px; padding-top: 0px;">
   <h2 class="title is-4" style="text-align: center;">Comparison with Depth Anything V1 on <span style="color: #4FACFA;">Fine-grained Details</span></h2>
   <div class="hero-body">
     
@@ -407,10 +407,10 @@
     </div>
     
   </div>
-</section>
+</section> -->
 
 
-<section class="hero is-small" style="margin-top: 50px; padding-top: 0px;">
+<!-- <section class="hero is-small" style="margin-top: 50px; padding-top: 0px;">
   <h2 class="title is-4" style="text-align: center;">Comparison with Depth Anything V1 on <span style="color: #4FACFA;">Robustness</span></h2>
   <div class="hero-body">
     <div class="container">
@@ -567,10 +567,10 @@
     </div>
     
   </div>
-</section>
+</section> -->
 
 
-<section class="hero is-small" style="margin-top: 50px; padding-top: 0px;">
+<!-- <section class="hero is-small" style="margin-top: 50px; padding-top: 0px;">
   <h2 class="title is-4" style="text-align: center;">Comparison with Marigold and Geowizard</h2>
   <div class="hero-body">
     
@@ -1461,10 +1461,10 @@
     </div>
     
   </div>
-</section>
+</section> -->
 
 
-<section class="section"  style="margin-top: 0; padding-top: 50px;">
+<!-- <section class="section"  style="margin-top: 0; padding-top: 50px;">
   <h2 class="title is-4" style="text-align: center;">Depth Visualization on Videos</h2>
   <div class="container is-max-desktop">
     <div class="columns is-centered">
@@ -1520,7 +1520,7 @@
       <source src="./videos/boys.mov" type="video/mp4">
   </video>
   </div>
-</section>
+</section> -->
 
 
 <!-- <section class="section" style="background-color:#efeff081"> -->
@@ -1532,8 +1532,7 @@
         <h2 class="title is-4">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            This work presents Depth Anything V2. Without pursuing fancy techniques, we aim to reveal crucial findings to pave the way towards building a powerful monocular depth estimation model. Notably, compared with V1, this version produces much finer and more robust depth predictions through three key practices: 1) replacing all labeled real images with synthetic images, 2) scaling up the capacity of our teacher model, and 3) teaching student models via the bridge of large-scale pseudo-labeled real images. Compared with the latest models built on Stable Diffusion, our models are significantly more efficient (more than 10x faster) and more accurate. We offer models of different scales (ranging from 25M to 1.3B params) to support extensive scenarios. Benefiting from their strong generalization capability, we fine-tune them with metric depth labels to obtain our metric depth models. In addition to our models, considering the limited diversity and frequent noise in current test sets, we construct a versatile evaluation benchmark with sparse depth annotations to facilitate future research.
-          </p>
+            Monocular Depth Estimation (MDE) is a fundamental 3D vision problem with numerous applications such as 3D scene reconstruction, autonomous navigation, and AI content creation. However, robust and generalizable MDE remains challenging due to limited real-world labeled data and distribution gaps between synthetic datasets and real data. Existing methods often struggle on real-world test data with low efficiency, reduced accuracy, and lack of detail. To address these issues, we propose an efficient MDE approach named FiffDepth. The key feature of FiffDepth is its use of diffusion priors. It transforms diffusion-based image generators into a feed-forward architecture for detailed depth estimation. FiffDepth preserves key generative features and integrates the strong generalization capabilities of models like DINOv2. Through benchmark evaluations, we demonstrate that FiffDepth achieves exceptional accuracy, stability, and fine-grained detail, offering significant improvements in MDE performance against state-of-the-art MDE approaches.
         </div>
       </div>
     </div>
@@ -1542,7 +1541,7 @@
 </section>
 
 
-<section class="section">
+<!-- <section class="section">
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-four-fifths">
@@ -1576,16 +1575,16 @@
           <div class="image-area">
             <img src="./static/images/dataset.png" alt="pipeline" width="55%" class="center">
           </div>
-</section>
+</section> -->
 
 
 <section class="section pt-0" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title is-4">Citation</h2>
-    <pre class="selectable"><code>@article{depth_anything_v2,
-  title={Depth Anything V2},
-  author={Yang, Lihe and Kang, Bingyi and Huang, Zilong and Zhao, Zhen and Xu, Xiaogang and Feng, Jiashi and Zhao, Hengshuang},
-  journal={arXiv:2406.09414},
+    <pre class="selectable"><code>@article{bai2024fiffdepth,
+  title={FiffDepth: Feed-forward Transformation of Diffusion-Based Generators for Detailed Depth Estimation},
+  author={Bai, Yunpeng and Huang, Qixing},
+  journal={arXiv preprint arXiv:2412.00671},
   year={2024}
 }</code></pre>
   </div>
@@ -1596,10 +1595,10 @@
   <div class="container">
     <div class="content has-text-centered">
       <a class="icon-link"
-         href="https://arxiv.org/abs/2406.09414">
+         href="https://arxiv.org/abs/2412.00671">
         <i class="fas fa-file-pdf"></i>
       </a>
-      <a class="icon-link" href="https://github.com/DepthAnything/Depth-Anything-V2" class="external-link" disabled>
+      <a class="icon-link" href="https://github.com/yunpeng1998/FiffDepth/" class="external-link" disabled>
         <i class="fab fa-github"></i>
       </a>
     </div>
