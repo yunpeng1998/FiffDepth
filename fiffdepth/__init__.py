@@ -18,6 +18,6 @@
 # --------------------------------------------------------------------------
 
 
-from .marigold_pipeline import MarigoldPipeline, MarigoldDepthOutput  # noqa: F401
+# from .marigold_pipeline import MarigoldPipeline, MarigoldDepthOutput  # noqa: F401
 from .direct_pipeline import DirectPipeline, MarigoldDepthOutput 
-from .extended_pipeline import ExtendedPipeline
+# from .extended_pipeline import ExtendedPipeline

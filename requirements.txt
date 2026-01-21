@@ -1,0 +1,15 @@
+accelerate>=0.22.0
+diffusers==0.25.0
+huggingface_hub==0.25.0
+matplotlib
+scipy
+torch==2.0.1
+torchvision==0.15.2
+transformers>=4.32.1
+omegaconf
+pandas
+tabulate
+h5py
+opencv-python
+tensorboard
+xformers==0.0.21

@@ -32,6 +32,8 @@ import time
 
 from fiffdepth import DirectPipeline
 
+from diffusers import UNet2DConditionModel
+
 EXTENSION_LIST = [".jpg", ".jpeg", ".png", ".webp"]
 
 
@@ -42,6 +44,14 @@ if "__main__" == __name__:
     parser = argparse.ArgumentParser(
         description="Run single-image depth estimation using Marigold."
     )
+
+    parser.add_argument(
+        "--sd_ckpt",
+        type=str,
+        default="./checkpoints/fiffdepth",
+        help="Checkpoint path or hub name.",
+    )
+
     parser.add_argument(
         "--checkpoint",
         type=str,
@@ -120,10 +130,10 @@ if "__main__" == __name__:
     input_rgb_dir = args.input_rgb_dir
     output_dir = args.output_dir
 
-    denoise_steps = args.denoise_steps
-    ensemble_size = args.ensemble_size
-    if ensemble_size > 15:
-        logging.warning("Running with large ensemble size will be slow.")
+    # denoise_steps = args.denoise_steps
+    # ensemble_size = args.ensemble_size
+    # if ensemble_size > 15:
+    #     logging.warning("Running with large ensemble size will be slow.")
     half_precision = args.half_precision
 
     processing_res = args.processing_res
@@ -191,8 +201,13 @@ if "__main__" == __name__:
         dtype = torch.float32
         variant = None
 
+    unet = UNet2DConditionModel.from_pretrained(
+        checkpoint_path, subfolder="unet", variant=variant, torch_dtype=dtype
+    )
     pipe = DirectPipeline.from_pretrained(
-        checkpoint_path, variant=variant, torch_dtype=dtype
+        args.sd_ckpt,
+        unet = unet,
+        variant=variant, torch_dtype=dtype
     )
     # _model_path = os.path.join(checkpoint_path, "unet", "diffusion_pytorch_model.bin")
 
@@ -204,26 +219,20 @@ if "__main__" == __name__:
     except ImportError:
         pass  # run without xformers
 
-    unet_params = sum(p.numel() for p in pipe.unet.parameters())
-    print(f"Unet parameters: {unet_params}")
-
-    vae_params = sum(p.numel() for p in pipe.vae.parameters())
-    print(f"Unet parameters: {vae_params}")
-
     pipe = pipe.to(device)
-    logging.info(
-        f"scale_invariant: {pipe.scale_invariant}, shift_invariant: {pipe.shift_invariant}"
-    )
+    # logging.info(
+    #     f"scale_invariant: {pipe.scale_invariant}, shift_invariant: {pipe.shift_invariant}"
+    # )
 
     # Print out config
-    logging.info(
-        f"Inference settings: checkpoint = `{checkpoint_path}`, "
-        f"with denoise_steps = {denoise_steps or pipe.default_denoising_steps}, "
-        f"ensemble_size = {ensemble_size}, "
-        f"processing resolution = {processing_res or pipe.default_processing_resolution}, "
-        f"seed = {seed}; "
-        f"color_map = {color_map}."
-    )
+    # logging.info(
+    #     f"Inference settings: checkpoint = `{checkpoint_path}`, "
+    #     f"with denoise_steps = {denoise_steps or pipe.default_denoising_steps}, "
+    #     f"ensemble_size = {ensemble_size}, "
+    #     f"processing resolution = {processing_res or pipe.default_processing_resolution}, "
+    #     f"seed = {seed}; "
+    #     f"color_map = {color_map}."
+    # )
 
     # -------------------- Inference and saving --------------------
     with torch.no_grad():

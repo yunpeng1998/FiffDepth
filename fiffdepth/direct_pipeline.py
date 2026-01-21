@@ -193,7 +193,7 @@ class DirectPipeline(DiffusionPipeline):
         if processing_res is None:
             processing_res = self.default_processing_resolution
 
-        assert processing_res >= 0
+        # assert processing_res >= 0
         # assert ensemble_size >= 1
 
         # Check if denoising step is reasonable
